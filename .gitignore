@@ -1,0 +1,21 @@
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.cache
+
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio generated files
+*.sln.docstates
+
+# IDE files
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
