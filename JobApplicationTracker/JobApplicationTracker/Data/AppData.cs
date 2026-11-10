@@ -13,6 +13,8 @@ namespace JobApplicationTracker.Data
 		public DataStore<Candidate> Candidates { get; }
 		public DataStore<Application> Applications { get; }
 
+		public Dictionary<int, Job> JobsById { get; }
+
 		public AppData()
 		{
 			Companies = new DataStore<Company>();
@@ -20,6 +22,7 @@ namespace JobApplicationTracker.Data
 			Jobs = new DataStore<Job>();
 			Candidates = new DataStore<Candidate>();
 			Applications = new DataStore<Application>();
+			JobsById = new Dictionary<int, Job>();
 		}
 	}
 }

@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Practice\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

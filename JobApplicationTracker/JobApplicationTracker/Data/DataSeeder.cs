@@ -1,5 +1,6 @@
 ﻿using JobApplicationTracker.Enums;
 using JobApplicationTracker.Models;
+using JobApplicationTracker.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -65,9 +66,9 @@ namespace JobApplicationTracker.Data
 				CompanyId = 2
 			});
 
-
+			JobService jobService = new JobService(data);
 			// Seed Jobs
-			data.Jobs.Add(new Job
+			jobService.AddJob(new Job
 			{
 				Id = 1,
 				Title = "Junior Backend .NET Developer",
@@ -80,7 +81,7 @@ namespace JobApplicationTracker.Data
 				RecruiterId = 1
 			});
 
-			data.Jobs.Add(new Job
+			jobService.AddJob(new Job
 			{
 				Id = 2,
 				Title = "Software Engineer",
@@ -93,7 +94,7 @@ namespace JobApplicationTracker.Data
 				RecruiterId = 1
 			});
 
-			data.Jobs.Add(new Job
+			jobService.AddJob(new Job
 			{
 				Id = 3,
 				Title = "Database Developer",
@@ -106,7 +107,7 @@ namespace JobApplicationTracker.Data
 				RecruiterId = 2
 			});
 
-			data.Jobs.Add(new Job
+			jobService.AddJob(new Job
 			{
 				Id = 4,
 				Title = "Junior .NET Developer",
@@ -119,7 +120,7 @@ namespace JobApplicationTracker.Data
 				RecruiterId = 3
 			});
 
-			data.Jobs.Add(new Job
+			jobService.AddJob(new Job
 			{
 				Id = 5,
 				Title = "Frontend Developer",
@@ -132,7 +133,7 @@ namespace JobApplicationTracker.Data
 				RecruiterId = 3
 			});
 
-			data.Jobs.Add(new Job
+			jobService.AddJob(new Job
 			{
 				Id = 6,
 				Title = "QA Engineer",
