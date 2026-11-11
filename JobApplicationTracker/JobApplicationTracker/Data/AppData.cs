@@ -15,6 +15,8 @@ namespace JobApplicationTracker.Data
 
 		public Dictionary<int, Job> JobsById { get; }
 
+		public HashSet<string> CandidateEmails { get; } 
+
 		public AppData()
 		{
 			Companies = new DataStore<Company>();
@@ -23,6 +25,7 @@ namespace JobApplicationTracker.Data
 			Candidates = new DataStore<Candidate>();
 			Applications = new DataStore<Application>();
 			JobsById = new Dictionary<int, Job>();
+			CandidateEmails = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 		}
 	}
 }

@@ -40,9 +40,9 @@ namespace JobApplicationTracker.Data
 				Status = CompanyStatus.Pending
 			});
 
-
+			RecruiterService recruiterService = new RecruiterService(data);
 			// Seed Recruiters
-			data.Recruiters.Add(new Recruiter
+			recruiterService.AddRecruiter(new Recruiter
 			{
 				Id = 1,
 				Name = "Ahmed Hassan",
@@ -50,7 +50,7 @@ namespace JobApplicationTracker.Data
 				CompanyId = 1
 			});
 
-			data.Recruiters.Add(new Recruiter
+			recruiterService.AddRecruiter(new Recruiter
 			{
 				Id = 2,
 				Name = "Mona Ali",
@@ -58,7 +58,7 @@ namespace JobApplicationTracker.Data
 				CompanyId = 1
 			});
 
-			data.Recruiters.Add(new Recruiter
+			recruiterService.AddRecruiter(new Recruiter
 			{
 				Id = 3,
 				Name = "Omar Khaled",
@@ -146,9 +146,9 @@ namespace JobApplicationTracker.Data
 				RecruiterId = 3
 			});
 
-
+			CandidateService candidateService = new CandidateService(data);
 			// Seed Candidates
-			data.Candidates.Add(new Candidate
+			candidateService.AddCandidate(new Candidate
 			{
 				Id = 1,
 				FullName = "Sara Mohamed",
@@ -157,7 +157,7 @@ namespace JobApplicationTracker.Data
 				YearsOfExperience = 1
 			});
 
-			data.Candidates.Add(new Candidate
+			candidateService.AddCandidate(new Candidate
 			{
 				Id = 2,
 				FullName = "Ali Hassan",
@@ -166,7 +166,7 @@ namespace JobApplicationTracker.Data
 				YearsOfExperience = 2
 			});
 
-			data.Candidates.Add(new Candidate
+			candidateService.AddCandidate(new Candidate
 			{
 				Id = 3,
 				FullName = "Nour Ahmed",
@@ -175,7 +175,7 @@ namespace JobApplicationTracker.Data
 				YearsOfExperience = 0
 			});
 
-			data.Candidates.Add(new Candidate
+			candidateService.AddCandidate(new Candidate
 			{
 				Id = 4,
 				FullName = "Youssef Adel",
@@ -184,7 +184,7 @@ namespace JobApplicationTracker.Data
 				YearsOfExperience = 3
 			});
 
-			data.Candidates.Add(new Candidate
+			candidateService.AddCandidate(new Candidate
 			{
 				Id = 5,
 				FullName = "Mariam Samir",
