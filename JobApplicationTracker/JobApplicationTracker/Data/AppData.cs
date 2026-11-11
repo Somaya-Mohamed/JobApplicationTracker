@@ -1,4 +1,5 @@
-﻿using JobApplicationTracker.Models;
+﻿using JobApplicationTracker.Enums;
+using JobApplicationTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +20,8 @@ namespace JobApplicationTracker.Data
 
 		public HashSet<(int JobId, int CandidateId)> AppliedJobs { get; } 
 
+		public Stack<(int CompanyId, CompanyStatus OldStatus)> CompanyStatusHistory { get; }
+
 		public AppData()
 		{
 			Companies = new DataStore<Company>();
@@ -29,6 +32,7 @@ namespace JobApplicationTracker.Data
 			JobsById = new Dictionary<int, Job>();
 			CandidateEmails = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 			AppliedJobs = new HashSet<(int JobId, int CandidateId)>();
+			CompanyStatusHistory = new Stack<(int CompanyId, CompanyStatus OldStatus)>();
 		}
 	}
 }

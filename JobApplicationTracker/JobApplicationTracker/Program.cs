@@ -380,16 +380,52 @@ DataSeeder.Seed(data);
 
 //////   -----------------------------------------      Test practice :) ------------------------------------------
 
-//collections test
-CollectionsPractice.Run(data);
+////collections test
+//CollectionsPractice.Run(data);
 
-// Generic Method practice:
-Job? job = GenericMethods.FindById(
-	data.Jobs.GetAll(),
-	1
+//// Generic Method practice:
+//Job? job = GenericMethods.FindById(
+//	data.Jobs.GetAll(),
+//	1
+//);
+
+//if (job != null)
+//{
+//	Console.WriteLine($"Generic Method Result: {job.Title}");
+//}
+
+//////   -----------------------------------------      Test H2: implement undo status :) ------------------------------------------
+
+CompanyService companyService = new CompanyService(data);
+
+Console.WriteLine(
+	companyService.ChangeCompanyStatus(3, CompanyStatus.Approved)
 );
 
-if (job != null)
-{
-	Console.WriteLine($"Generic Method Result: {job.Title}");
-}
+Console.WriteLine(
+	companyService.ChangeCompanyStatus(3, CompanyStatus.Rejected)
+);
+
+Console.WriteLine(
+	data.Companies.GetById(3)?.Status
+);
+
+Console.WriteLine(
+	companyService.UndoLastStatusChange()
+);
+
+Console.WriteLine(
+	data.Companies.GetById(3)?.Status
+);
+
+Console.WriteLine(
+	companyService.UndoLastStatusChange()
+);
+
+Console.WriteLine(
+	data.Companies.GetById(3)?.Status
+);
+
+Console.WriteLine(
+	companyService.UndoLastStatusChange()
+);

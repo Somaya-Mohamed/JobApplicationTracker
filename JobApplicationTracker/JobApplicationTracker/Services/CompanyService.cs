@@ -54,8 +54,27 @@ namespace JobApplicationTracker.Services
 			if (company == null)
 				return false;
 
+			_data.CompanyStatusHistory.Push((company.Id, company.Status));
+
 			company.Status = newStatus;
 			return true;
+		}
+
+		public bool UndoLastStatusChange()
+		{
+			if (_data.CompanyStatusHistory.Count == 0)
+				return false;
+
+			var LastChange = _data.CompanyStatusHistory.Pop();
+
+			Company? company = _data.Companies.GetById(LastChange.CompanyId);
+
+			if (company == null)
+				return false;
+
+			company.Status = LastChange.OldStatus;
+			return true;
+
 		}
 
 		public IEnumerable<Company> GetCompaniesByStatus(CompanyStatus status)
