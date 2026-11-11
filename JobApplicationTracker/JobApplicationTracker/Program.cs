@@ -141,200 +141,238 @@ DataSeeder.Seed(data);
 
 //Console.WriteLine($"Add Job To Pending Company: {jobService.AddJob(pendingCompanyJob)}");
 
-////   -----------------------------------------      Test the companyService with Job entities :) ------------------------------------------
+////   -----------------------------------------      Test the companyService  :) ------------------------------------------
 
 
-CompanyService companyService = new CompanyService(data);
+//CompanyService companyService = new CompanyService(data);
 
-// 1. Get All Companies
-Console.WriteLine("All Companies:");
+//// 1. Get All Companies
+//Console.WriteLine("All Companies:");
 
-foreach (var company in companyService.GetAllCompanies())
-{
-	Console.WriteLine($"{company.Id} - {company.Name} - {company.Status}");
-}
+//foreach (var company in companyService.GetAllCompanies())
+//{
+//	Console.WriteLine($"{company.Id} - {company.Name} - {company.Status}");
+//}
 
-// 2. Add Company
-Company newCompany = new Company
-{
-	Id = 4,
-	Name = "Future Tech",
-	Industry = "Software",
-	City = "Tanta",
-	Status = CompanyStatus.Pending
-};
+//// 2. Add Company
+//Company newCompany = new Company
+//{
+//	Id = 4,
+//	Name = "Future Tech",
+//	Industry = "Software",
+//	City = "Tanta",
+//	Status = CompanyStatus.Pending
+//};
 
-Console.WriteLine($"Add: {companyService.AddCompany(newCompany)}");
+//Console.WriteLine($"Add: {companyService.AddCompany(newCompany)}");
 
-// 3. Get By Id
-Company? foundCompany = companyService.GetCompanyById(4);
+//// 3. Get By Id
+//Company? foundCompany = companyService.GetCompanyById(4);
 
-Console.WriteLine($"Found: {foundCompany?.Name}");
+//Console.WriteLine($"Found: {foundCompany?.Name}");
 
-// 4. Update Company
-Company updatedCompany = new Company
-{
-	Id = 4,
-	Name = "Future Technology",
-	Industry = "IT",
-	City = "Tanta",
-	Status = CompanyStatus.Pending
-};
+//// 4. Update Company
+//Company updatedCompany = new Company
+//{
+//	Id = 4,
+//	Name = "Future Technology",
+//	Industry = "IT",
+//	City = "Tanta",
+//	Status = CompanyStatus.Pending
+//};
 
-Console.WriteLine($"Update: {companyService.UpdateCompany(updatedCompany)}");
+//Console.WriteLine($"Update: {companyService.UpdateCompany(updatedCompany)}");
 
-// 5. Change Status
+//// 5. Change Status
+//Console.WriteLine(
+//	$"Change Status: {companyService.ChangeCompanyStatus(4, CompanyStatus.Approved)}"
+//);
+
+//// 6. Get Companies By Status
+//Console.WriteLine("Approved Companies:");
+
+//foreach (var company in companyService.GetCompaniesByStatus(CompanyStatus.Approved))
+//{
+//	Console.WriteLine(company.Name);
+//}
+
+//// 7. Remove Company
+//Console.WriteLine($"Remove: {companyService.RemoveCompanyById(4)}");
+
+//// 8. Check After Remove
+//Console.WriteLine($"Find After Remove: {companyService.GetCompanyById(4) == null}");
+
+
+//////   -----------------------------------------      Test the RecruiterService :) ------------------------------------------
+
+
+//RecruiterService recruiterService = new RecruiterService(data);
+
+//// 1. Get All
+//foreach (var recruiter in recruiterService.GetAllRecruiters())
+//{
+//	Console.WriteLine(
+//		$"{recruiter.Id} - {recruiter.Name} - Company: {recruiter.CompanyId}"
+//	);
+//}
+
+//// 2. Add
+//Recruiter newRecruiter = new Recruiter
+//{
+//	Id = 4,
+//	Name = "Sara Ahmed",
+//	Email = "sara@futuretech.com",
+//	CompanyId = 1
+//};
+
+//Console.WriteLine(
+//	$"Add: {recruiterService.AddRecruiter(newRecruiter)}"
+//);
+
+//// 3. Invalid Company
+//Recruiter invalidRecruiter = new Recruiter
+//{
+//	Id = 5,
+//	Name = "Ali Mohamed",
+//	Email = "ali@futuretech.com",
+//	CompanyId = 99
+//};
+
+//Console.WriteLine(
+//	$"Add To Missing Company: {recruiterService.AddRecruiter(invalidRecruiter)}"
+//);
+
+//// 4. Get By Id
+//Console.WriteLine(
+//	$"Found: {recruiterService.GetRecruiterById(4)?.Name}"
+//);
+
+//// 5. Update
+//Recruiter updatedRecruiter = new Recruiter
+//{
+//	Id = 4,
+//	Name = "Sara Mohamed",
+//	Email = "sara.mohamed@futuretech.com",
+//	CompanyId = 2
+//};
+
+//Console.WriteLine(
+//	$"Update: {recruiterService.UpdateRecruiter(updatedRecruiter)}"
+//);
+
+//// 6. Remove
+//Console.WriteLine(
+//	$"Remove: {recruiterService.RemoveRecruiterById(4)}"
+//);
+
+
+//////   -----------------------------------------      Test the CandidateService :) ------------------------------------------
+
+//CandidateService candidateService = new CandidateService(data);
+
+//// 1. Check Seeded Data
+//Console.WriteLine(
+//	$"Candidates Count: {data.Candidates.GetAll().Count()}"
+//);
+
+//Console.WriteLine(
+//	$"Emails Count: {data.CandidateEmails.Count}"
+//);
+
+//// 2. Add New Candidate
+//Candidate newCandidate = new Candidate
+//{
+//	Id = 6,
+//	FullName = "Sara Ahmed",
+//	Email = "sara@gmail.com",
+//	PhoneNumber = "01000000000",
+//	YearsOfExperience = 1
+//};
+
+//Console.WriteLine(
+//	$"Add: {candidateService.AddCandidate(newCandidate)}"
+//);
+
+//// 3. Duplicate Email With Different Case
+//Candidate duplicateCandidate = new Candidate
+//{
+//	Id = 7,
+//	FullName = "Sara Mohamed",
+//	Email = "SARA@GMAIL.COM",
+//	PhoneNumber = "01111111111",
+//	YearsOfExperience = 2
+//};
+
+//Console.WriteLine(
+//	$"Duplicate Email: {candidateService.AddCandidate(duplicateCandidate)}"
+//);
+
+//// 4. Update Email
+//Candidate updatedCandidate = new Candidate
+//{
+//	Id = 6,
+//	FullName = "Sara Ahmed",
+//	Email = "sara.ahmed@gmail.com",
+//	PhoneNumber = "01000000000",
+//	YearsOfExperience = 1
+//};
+
+//Console.WriteLine(
+//	$"Update: {candidateService.UpdateCandidate(updatedCandidate)}"
+//);
+
+//// 5. Check Old And New Emails
+//Console.WriteLine(
+//	$"Old Email Exists: {data.CandidateEmails.Contains("sara@gmail.com")}"
+//);
+
+//Console.WriteLine(
+//	$"New Email Exists: {data.CandidateEmails.Contains("sara.ahmed@gmail.com")}"
+//);
+
+//// 6. Remove Candidate
+//Console.WriteLine(
+//	$"Remove: {candidateService.RemoveCandidateById(6)}"
+//);
+
+//Console.WriteLine(
+//	$"Email Exists After Remove: {data.CandidateEmails.Contains("sara.ahmed@gmail.com")}"
+//);
+
+//////   -----------------------------------------      Test H1 — Apply for Job :) ------------------------------------------
+
+//data.AppliedJobs.Add((5, 1));
+//data.AppliedJobs.Add((6, 1));
+//data.AppliedJobs.Add((5, 2));
+
+//Console.WriteLine(data.AppliedJobs.Contains((5, 1)));
+//Console.WriteLine(data.AppliedJobs.Contains((5, 2)));
+//Console.WriteLine(data.AppliedJobs.Contains((7, 1)));
+
+
+ApplicationService applicationService = new ApplicationService(data);
+
+// 1. Best pract
 Console.WriteLine(
-	$"Change Status: {companyService.ChangeCompanyStatus(4, CompanyStatus.Approved)}"
+	applicationService.ApplyForJob(1, 1)
 );
 
-// 6. Get Companies By Status
-Console.WriteLine("Approved Companies:");
-
-foreach (var company in companyService.GetCompaniesByStatus(CompanyStatus.Approved))
-{
-	Console.WriteLine(company.Name);
-}
-
-// 7. Remove Company
-Console.WriteLine($"Remove: {companyService.RemoveCompanyById(4)}");
-
-// 8. Check After Remove
-Console.WriteLine($"Find After Remove: {companyService.GetCompanyById(4) == null}");
-
-
-////   -----------------------------------------      Test the RecruiterService with Job entities :) ------------------------------------------
-
-
-RecruiterService recruiterService = new RecruiterService(data);
-
-// 1. Get All
-foreach (var recruiter in recruiterService.GetAllRecruiters())
-{
-	Console.WriteLine(
-		$"{recruiter.Id} - {recruiter.Name} - Company: {recruiter.CompanyId}"
-	);
-}
-
-// 2. Add
-Recruiter newRecruiter = new Recruiter
-{
-	Id = 4,
-	Name = "Sara Ahmed",
-	Email = "sara@futuretech.com",
-	CompanyId = 1
-};
-
+// 2. Same person Same job
 Console.WriteLine(
-	$"Add: {recruiterService.AddRecruiter(newRecruiter)}"
+	applicationService.ApplyForJob(1, 1)
 );
 
-// 3. Invalid Company
-Recruiter invalidRecruiter = new Recruiter
-{
-	Id = 5,
-	Name = "Ali Mohamed",
-	Email = "ali@futuretech.com",
-	CompanyId = 99
-};
-
+// 3. Same person Diffrent job
 Console.WriteLine(
-	$"Add To Missing Company: {recruiterService.AddRecruiter(invalidRecruiter)}"
+	applicationService.ApplyForJob(1, 2)
 );
 
-// 4. Get By Id
+// 4. Not Valid Candidate 
 Console.WriteLine(
-	$"Found: {recruiterService.GetRecruiterById(4)?.Name}"
+	applicationService.ApplyForJob(99, 1)
 );
 
-// 5. Update
-Recruiter updatedRecruiter = new Recruiter
-{
-	Id = 4,
-	Name = "Sara Mohamed",
-	Email = "sara.mohamed@futuretech.com",
-	CompanyId = 2
-};
-
+// 5. Not valid Job 
 Console.WriteLine(
-	$"Update: {recruiterService.UpdateRecruiter(updatedRecruiter)}"
-);
-
-// 6. Remove
-Console.WriteLine(
-	$"Remove: {recruiterService.RemoveRecruiter(4)}"
-);
-
-
-////   -----------------------------------------      Test the CandidateService with Job entities :) ------------------------------------------
-
-CandidateService candidateService = new CandidateService(data);
-
-// 1. Check Seeded Data
-Console.WriteLine(
-	$"Candidates Count: {data.Candidates.GetAll().Count()}"
-);
-
-Console.WriteLine(
-	$"Emails Count: {data.CandidateEmails.Count}"
-);
-
-// 2. Add New Candidate
-Candidate newCandidate = new Candidate
-{
-	Id = 6,
-	FullName = "Sara Ahmed",
-	Email = "sara@gmail.com",
-	PhoneNumber = "01000000000",
-	YearsOfExperience = 1
-};
-
-Console.WriteLine(
-	$"Add: {candidateService.AddCandidate(newCandidate)}"
-);
-
-// 3. Duplicate Email With Different Case
-Candidate duplicateCandidate = new Candidate
-{
-	Id = 7,
-	FullName = "Sara Mohamed",
-	Email = "SARA@GMAIL.COM",
-	PhoneNumber = "01111111111",
-	YearsOfExperience = 2
-};
-
-Console.WriteLine(
-	$"Duplicate Email: {candidateService.AddCandidate(duplicateCandidate)}"
-);
-
-// 4. Update Email
-Candidate updatedCandidate = new Candidate
-{
-	Id = 6,
-	FullName = "Sara Ahmed",
-	Email = "sara.ahmed@gmail.com",
-	PhoneNumber = "01000000000",
-	YearsOfExperience = 1
-};
-
-Console.WriteLine(
-	$"Update: {candidateService.UpdateCandidate(updatedCandidate)}"
-);
-
-// 5. Check Old And New Emails
-Console.WriteLine(
-	$"Old Email Exists: {data.CandidateEmails.Contains("sara@gmail.com")}"
-);
-
-Console.WriteLine(
-	$"New Email Exists: {data.CandidateEmails.Contains("sara.ahmed@gmail.com")}"
-);
-
-// 6. Remove Candidate
-Console.WriteLine(
-	$"Remove: {candidateService.RemoveCandidate(6)}"
-);
-
-Console.WriteLine(
-	$"Email Exists After Remove: {data.CandidateEmails.Contains("sara.ahmed@gmail.com")}"
+	applicationService.ApplyForJob(1, 99)
 );

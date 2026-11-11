@@ -17,21 +17,15 @@ namespace JobApplicationTracker.Services
 
 		public bool AddCandidate(Candidate candidate)
 		{
-			if (candidate == null)
-				return false;
-
-			if (string.IsNullOrWhiteSpace(candidate.FullName))
-				return false;
-
-			if (string.IsNullOrWhiteSpace(candidate.Email))
+			if (candidate == null || string.IsNullOrWhiteSpace(candidate.FullName) || string.IsNullOrWhiteSpace(candidate.Email))
 				return false;
 
 			if (_data.CandidateEmails.Contains(candidate.Email))
 				return false;
 
-			bool isAdded = _data.Candidates.Add(candidate);
-
-			if (!isAdded)
+			bool IsAdded = _data.Candidates.Add(candidate);
+			
+			if (!IsAdded)
 				return false;
 
 			_data.CandidateEmails.Add(candidate.Email);
@@ -51,57 +45,40 @@ namespace JobApplicationTracker.Services
 
 		public bool UpdateCandidate(Candidate candidate)
 		{
-			if (candidate == null)
+			if(candidate == null || string.IsNullOrWhiteSpace(candidate.FullName) || string.IsNullOrWhiteSpace(candidate.Email))
 				return false;
 
-			if (string.IsNullOrWhiteSpace(candidate.FullName))
+			Candidate? ExistingCandidate = _data.Candidates.GetById(candidate.Id);
+
+			if (ExistingCandidate == null)
 				return false;
 
-			if (string.IsNullOrWhiteSpace(candidate.Email))
+			bool IsEmailChanged = !string.Equals(candidate.Email, ExistingCandidate.Email, StringComparison.OrdinalIgnoreCase);
+
+			if (IsEmailChanged && _data.CandidateEmails.Contains(candidate.Email))
 				return false;
 
-			Candidate? existingCandidate =
-				_data.Candidates.GetById(candidate.Id);
+			bool IsUpdated = _data.Candidates.Update(candidate);
 
-			if (existingCandidate == null)
-				return false;
-
-			bool isEmailChanged = !string.Equals(
-				existingCandidate.Email,
-				candidate.Email,
-				StringComparison.OrdinalIgnoreCase
-			);
-
-			if (isEmailChanged &&
-				_data.CandidateEmails.Contains(candidate.Email))
+			if(IsEmailChanged && IsUpdated)
 			{
-				return false;
-			}
-
-			bool isUpdated = _data.Candidates.Update(candidate);
-
-			if (!isUpdated)
-				return false;
-
-			if (isEmailChanged)
-			{
-				_data.CandidateEmails.Remove(existingCandidate.Email);
+				_data.CandidateEmails.Remove(ExistingCandidate.Email);
 				_data.CandidateEmails.Add(candidate.Email);
 			}
 
 			return true;
 		}
 
-		public bool RemoveCandidate(int id)
+		public bool RemoveCandidateById(int id)
 		{
 			Candidate? candidate = _data.Candidates.GetById(id);
 
 			if (candidate == null)
 				return false;
 
-			bool isRemoved = _data.Candidates.RemoveById(id);
+			bool IsRemoved = _data.Candidates.RemoveById(id);
 
-			if (!isRemoved)
+			if (!IsRemoved)
 				return false;
 
 			_data.CandidateEmails.Remove(candidate.Email);

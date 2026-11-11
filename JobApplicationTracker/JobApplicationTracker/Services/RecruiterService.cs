@@ -17,19 +17,11 @@ namespace JobApplicationTracker.Services
 
 		public bool AddRecruiter(Recruiter recruiter)
 		{
-			if (recruiter == null)
+			if (recruiter == null || string.IsNullOrWhiteSpace(recruiter.Name) || string.IsNullOrWhiteSpace(recruiter.Email))
 				return false;
 
-			if (string.IsNullOrWhiteSpace(recruiter.Name))
-				return false;
-
-			if (string.IsNullOrWhiteSpace(recruiter.Email))
-				return false;
-
-			Company? company =
-				_data.Companies.GetById(recruiter.CompanyId);
-
-			if (company == null)
+			Company? company = _data.Companies.GetById(recruiter.CompanyId);
+			if(company == null)
 				return false;
 
 			return _data.Recruiters.Add(recruiter);
@@ -47,25 +39,17 @@ namespace JobApplicationTracker.Services
 
 		public bool UpdateRecruiter(Recruiter recruiter)
 		{
-			if (recruiter == null)
+			if (recruiter == null || string.IsNullOrWhiteSpace(recruiter.Name) || string.IsNullOrWhiteSpace(recruiter.Email))
 				return false;
 
-			if (string.IsNullOrWhiteSpace(recruiter.Name))
-				return false;
-
-			if (string.IsNullOrWhiteSpace(recruiter.Email))
-				return false;
-
-			Company? company =
-				_data.Companies.GetById(recruiter.CompanyId);
-
+			Company? company = _data.Companies.GetById(recruiter.CompanyId);
 			if (company == null)
 				return false;
 
 			return _data.Recruiters.Update(recruiter);
 		}
 
-		public bool RemoveRecruiter(int id)
+		public bool RemoveRecruiterById(int id)
 		{
 			return _data.Recruiters.RemoveById(id);
 		}
