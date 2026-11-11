@@ -1,6 +1,7 @@
 ﻿using JobApplicationTracker.Data;
 using JobApplicationTracker.Enums;
 using JobApplicationTracker.Models;
+using JobApplicationTracker.Practice;
 using JobApplicationTracker.Services;
 
 ////Console.WriteLine("بسم الله");
@@ -350,29 +351,45 @@ DataSeeder.Seed(data);
 //Console.WriteLine(data.AppliedJobs.Contains((7, 1)));
 
 
-ApplicationService applicationService = new ApplicationService(data);
+//ApplicationService applicationService = new ApplicationService(data);
 
-// 1. Best pract
-Console.WriteLine(
-	applicationService.ApplyForJob(1, 1)
+//// 1. Best pract
+//Console.WriteLine(
+//	applicationService.ApplyForJob(1, 1)
+//);
+
+//// 2. Same person Same job
+//Console.WriteLine(
+//	applicationService.ApplyForJob(1, 1)
+//);
+
+//// 3. Same person Diffrent job
+//Console.WriteLine(
+//	applicationService.ApplyForJob(1, 2)
+//);
+
+//// 4. Not Valid Candidate 
+//Console.WriteLine(
+//	applicationService.ApplyForJob(99, 1)
+//);
+
+//// 5. Not valid Job 
+//Console.WriteLine(
+//	applicationService.ApplyForJob(1, 99)
+//);
+
+//////   -----------------------------------------      Test practice :) ------------------------------------------
+
+//collections test
+CollectionsPractice.Run(data);
+
+// Generic Method practice:
+Job? job = GenericMethods.FindById(
+	data.Jobs.GetAll(),
+	1
 );
 
-// 2. Same person Same job
-Console.WriteLine(
-	applicationService.ApplyForJob(1, 1)
-);
-
-// 3. Same person Diffrent job
-Console.WriteLine(
-	applicationService.ApplyForJob(1, 2)
-);
-
-// 4. Not Valid Candidate 
-Console.WriteLine(
-	applicationService.ApplyForJob(99, 1)
-);
-
-// 5. Not valid Job 
-Console.WriteLine(
-	applicationService.ApplyForJob(1, 99)
-);
+if (job != null)
+{
+	Console.WriteLine($"Generic Method Result: {job.Title}");
+}
