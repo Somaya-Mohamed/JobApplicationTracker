@@ -54,6 +54,9 @@ namespace JobApplicationTracker.Services
 			if (company == null)
 				return false;
 
+			if (company.Status == newStatus)
+				return false;
+
 			_data.CompanyStatusHistory.Push((company.Id, company.Status));
 
 			company.Status = newStatus;

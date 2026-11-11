@@ -3,6 +3,7 @@ using JobApplicationTracker.Enums;
 using JobApplicationTracker.Models;
 using JobApplicationTracker.Practice;
 using JobApplicationTracker.Services;
+using JobApplicationTracker.UI;
 
 ////Console.WriteLine("بسم الله");
 //// -----------------------------------------      Test the DataStore with Job entities :) ------------------------------------------
@@ -66,7 +67,9 @@ using JobApplicationTracker.Services;
 //appData.Companies.Add(new Company { Id = 1, Name = "TechCorp" });
 
 
-///               Test SeedData
+////   -----------------------------------------      Test Test SeedData :) ------------------------------------------
+
+
 //AppData data = new AppData();
 
 //DataSeeder.Seed(data);
@@ -77,9 +80,9 @@ using JobApplicationTracker.Services;
 //Console.WriteLine($"Candidates: {data.Candidates.GetAll().Count()}"); 
 
 
-AppData data = new AppData();
+//AppData data = new AppData();
 
-DataSeeder.Seed(data);
+//DataSeeder.Seed(data);
 
 ////   -----------------------------------------      Test the JobService with Job entities :) ------------------------------------------
 
@@ -396,36 +399,48 @@ DataSeeder.Seed(data);
 
 //////   -----------------------------------------      Test H2: implement undo status :) ------------------------------------------
 
-CompanyService companyService = new CompanyService(data);
+//CompanyService companyService = new CompanyService(data);
 
-Console.WriteLine(
-	companyService.ChangeCompanyStatus(3, CompanyStatus.Approved)
-);
+//Console.WriteLine(
+//	companyService.ChangeCompanyStatus(3, CompanyStatus.Approved)
+//);
 
-Console.WriteLine(
-	companyService.ChangeCompanyStatus(3, CompanyStatus.Rejected)
-);
+//Console.WriteLine(
+//	companyService.ChangeCompanyStatus(3, CompanyStatus.Rejected)
+//);
 
-Console.WriteLine(
-	data.Companies.GetById(3)?.Status
-);
+//Console.WriteLine(
+//	data.Companies.GetById(3)?.Status
+//);
 
-Console.WriteLine(
-	companyService.UndoLastStatusChange()
-);
+//Console.WriteLine(
+//	companyService.UndoLastStatusChange()
+//);
 
-Console.WriteLine(
-	data.Companies.GetById(3)?.Status
-);
+//Console.WriteLine(
+//	data.Companies.GetById(3)?.Status
+//);
 
-Console.WriteLine(
-	companyService.UndoLastStatusChange()
-);
+//Console.WriteLine(
+//	companyService.UndoLastStatusChange()
+//);
 
-Console.WriteLine(
-	data.Companies.GetById(3)?.Status
-);
+//Console.WriteLine(
+//	data.Companies.GetById(3)?.Status
+//);
 
-Console.WriteLine(
-	companyService.UndoLastStatusChange()
-);
+//Console.WriteLine(
+//	companyService.UndoLastStatusChange()
+//);
+
+//------------------------------------------------------------- Finally :))  --------------------------------------------------------------------------------------
+
+
+
+AppData data = new AppData();
+
+DataSeeder.Seed(data);
+
+ConsoleUI consoleUI = new ConsoleUI(data);
+
+consoleUI.Run();

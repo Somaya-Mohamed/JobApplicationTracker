@@ -49,7 +49,7 @@ namespace JobApplicationTracker.Services
 			if (job == null)
 				return false;
 
-			Job ExistingJob = _data.Jobs.GetById(job.Id);
+			Job? ExistingJob = _data.Jobs.GetById(job.Id);
 			if (ExistingJob == null)
 				return false;
 
