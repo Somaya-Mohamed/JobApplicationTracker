@@ -132,7 +132,7 @@ This data is initialized through `DataSeeder` to make the application ready for 
 1. Clone the repository:
 
 ```bash
-git clone YOUR_REPOSITORY_URL
+git clone https://github.com/Somaya-Mohamed/JobApplicationTracker
 ```
 
 2. Open the solution in Visual Studio.
@@ -176,4 +176,4 @@ This sprint focuses on in-memory data management and C# collections.
 
 .NET Backend Developer
 
-[GitHub](https://github.com/Somaya-Mohamed) · [Portfolio](https://somaya-mohamed.github.io/my-portfolio)
+[GitHub](https://github.com/Somaya-Mohamed) · [Portfolio](https://somaya-mohamed.github.io/My-portfolio/)
